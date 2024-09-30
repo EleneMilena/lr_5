@@ -20,38 +20,86 @@ public class Request {
         return "{" +
                 "uid=`" + uid + '\'' +
                 ", operationUid='" + operationUid + '\'' +
-                ", systemNam" + systemName + '\'' +
-                ", systemTime='" + systemTime + '\'' +
+                ", systemName" + systemName + '\'' +
+                ", systemTime" + systemTime + '\'' +
                 ", source=`" + source + '\'' +
+                ", position='" + position + '\'' +
+                ", salary='" + salary + '\'' +
+                ", bonus='" + bonus + '\'' +
+                ", workDays='" + workDays + '\'' +
                 ", communicationId=" + communicationId +
                 ", templateId=" + templateId +
                 ", productCode=" + productCode +
                 ", smsCode=" + smsCode +
+                ", isManager=" + isManager +  // Выводим значение isManager
                 "}";
     }
 
+    /***
+     * Уникальный идентификатор сообщения
+     */
     @NotBlank
     @Size(max = 32)
     private String uid;
-
+    /***
+     * Уникальный идентификатор операции
+     */
     @NotBlank
     @Size(max = 32)
     private String operationUid;
-
+    /***
+     * Имя системы отправителя
+     */
     private Systems systemName;
-
+    /***
+     * Должность
+     */
+    private Positions position;
+    /***
+     * Время создания сообщения
+     */
     @NotBlank
     private String systemTime;
-
-    private long requestTime;  // Новое поле для хранения метки времени
-
+    /***
+     * Поле для хранения метки времени (для логов)
+     */
+    private long requestTime;
+    /***
+     * Наименование ресурса
+     */
     private String source;
-
+    /***
+     * Уникальный идентификатор коммуникации
+     */
     @Min(1)
     @Max(100000)
-    private int communicationId;
-
-    private int templateId;
-    private int productCode;
-    private int smsCode;
+    private Integer communicationId;
+    /***
+     * Уникальный идентификатор шаблона
+     */
+    private Integer templateId;
+    /***
+     * Код продукта
+     */
+    private Integer productCode;
+    /***
+     * Смс код
+     */
+    private Integer smsCode;
+    /***
+     * Заработная плата
+     */
+    private Double salary;
+    /***
+     * Коэффициент бонуса
+     */
+    private Double bonus;
+    /***
+     * Количество рабочих дней
+     */
+    private Integer workDays;
+    /***
+     * Руководитель?
+     */
+    private Boolean isManager;
 }
